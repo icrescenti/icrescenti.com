@@ -4,7 +4,7 @@ name: Deploy to neocities
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -17,5 +17,5 @@ jobs:
       uses: bcomnes/deploy-to-neocities@v1
       with:
         api_token: bc8d31817252b5c33d9b1295e1d6f9d6
-        cleanup: false
+        cleanup: true
         dist_dir: public

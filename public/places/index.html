@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Places visited</title>
+	<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+	
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+ 
+ <script src="parida/leaflet-routing-machine.js"></script>
+ <link rel="stylesheet" href="parida/leaflet-routing-machine.css" /> 
+
+  <link rel="icon" href="https://icrescenti.com/places/img/location.png"/>
+  
+	<style>
+	body {
+		margin: 0px;
+	}
+	#map {
+		width: 100%;
+		height: 100vh;
+		box-shadow: 5px 5px 5px #888;
+	}
+	#options { 
+		width: 10%;
+		height: 30%;
+		background-color:black;
+	}
+	form {
+		float: right;
+		display: inline-block;
+		margin: 10px;
+	}
+	h1 {
+		margin-left: 2%;
+		display: inline-block;
+	}
+	.leaflet-top {
+    display: none;
+    opacity: 100%;
+  }
+	</style>
+</head>
+	<body>
+		<div id='map'>
+		</div>
+		<form name="mapes">
+			<input type="radio" name="tipus" id="t1" value="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" checked>
+			<label>OpenStreetMap.Mapnik</label><br>
+			<input type="radio" name="tipus" id="t2" value="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}">
+			<label>Esri.WorldImagery</label><br>
+			<input type="radio" name="tipus" id="t3" value="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png">
+			<label>CartoDB.DarkMatter</label>
+		</form>
+		<form name="marktype">
+			<input type="checkbox" id="placesvista" onclick="cambiarvista()" checked>
+			<label>Places</label><br>
+			<input type="checkbox" id="rutillesvista" onclick="cambiarvista()">
+			<label>Routes</label><br>
+		</form>
+		
+		<script src="./engine.js"></script>
+	</body>
+</html>
