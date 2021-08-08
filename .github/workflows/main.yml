@@ -1,0 +1,21 @@
+name: Deploy to neocities
+
+# only run on changes to master
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    # When the dist_dir is ready, deploy it to neocities
+    - name: Deploy to neocities
+      uses: bcomnes/deploy-to-neocities@v1
+      with:
+        api_token: bc8d31817252b5c33d9b1295e1d6f9d6
+        cleanup: false
+        dist_dir: public
