@@ -116,6 +116,4 @@ function generateHeatmapPoint()
     [41.966936, 2.837461, 0.67],
     [41.966956, 2.837461, 0.34],
   ], {radius: 18}).addTo(map);
-
-  var heat = L.heatLayer(addressPoints).addTo(map);
 }
