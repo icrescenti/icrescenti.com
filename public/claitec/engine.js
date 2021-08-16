@@ -1,10 +1,8 @@
-var max = 73;
-var max_rutes = 2;
-var punters = [max];
-var rutes = [max_rutes];
-		
-var map = L.map('map').setView([41.9668465,2.8373639], 15);
-		L.tileLayer(document.querySelector('input[name="tipus"]:checked').value).addTo(map);
+var map = L.map('map').setView([41.9668465,2.8373639], 19);
+		L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 22,
+      maxNativeZoom: 18
+    }).addTo(map);
 		L.control.scale().addTo(map);
 		
 var greenIcon = new L.Icon({
@@ -16,112 +14,108 @@ var greenIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
-var locationIcon = new L.Icon({
-  iconUrl: 'https://icrescenti.com/places/img/location.png',
-  shadowUrl: '',
-  iconSize: [47, 47],
-  iconAnchor: [24, 40],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
-
-places();
-update();
 locations();
-
-function places() {
-    afegir(0, [41.9668465,2.8373639], "Claitec");
-}
-
-function sites() {
-  
-}
+generateHeatmapPoint();
 
 function locations() {
-  afegir_location([41.9723367,2.840595], "Universitat de Girona");
+  afegir_location([41.96683324797022, 2.837438432534917], "Claitec", greenIcon);
+  afegir_location([41.96700525683028, 2.8371836226992078], "Codi Tramuntana");
 }
 
-
-
-function afegir(i,p,n)
+function afegir_location(p,n,icon)
 {
-  punters[i] = L.marker(p).bindTooltip(n)
-  .bindPopup('Claitec HQ a Girona')
-  .addTo(map);
+  if (icon == undefined)
+    L.marker(p).bindTooltip(n)
+    .bindPopup(n)
+    .addTo(map);
+  else
+    L.marker(p, {
+      icon: icon
+    }).bindTooltip(n)
+    .bindPopup(n)
+    .addTo(map);
 }
 
-function afegir_location(p,n)
+function generateHeatmapPoint()
 {
-  L.marker(p, {
-        icon: locationIcon
-      }).bindPopup(n).addTo(map);
-}
+  L.heatLayer([
+    [41.967437, 2.83679, 1],
+    [41.967428, 2.836801, 1],
+    [41.96742, 2.836812, 1],
+    [41.967412, 2.836823, 1],
+    [41.967404, 2.836834, 4],
+    [41.967396, 2.836845, 1],
+    [41.967387, 2.836856, 1],
+    [41.967379, 2.836867, 1],
+    [41.967371, 2.836878, 1],
+    [41.967363, 2.836889, 1],
+    [41.967355, 2.8369, 2],
+    [41.967346, 2.836911, 1],
+    [41.967338, 2.836922, 1],
+    [41.96733, 2.836933, 1],
+    [41.967322, 2.836944, 2],
+    [41.967314, 2.836955, 1],
+    [41.967305, 2.836966, 1],
+    [41.967297, 2.836977, 2],
+    [41.967289, 2.836988, 2],
+    [41.967281, 2.836999, 1],
+    [41.967273, 2.83701, 2],
+    [41.967264, 2.837021, 3],
+    [41.967256, 2.837032, 1],
+    [41.967248, 2.837043, 4],
+    [41.96724, 2.837054, 15],
+    [41.967232, 2.837065, 3],
+    [41.967223, 2.837076, 4],
+    [41.967215, 2.837087, 5],
+    [41.967207, 2.837098, 2],
+    [41.967199, 2.837109, 1],
+    [41.967191, 2.83712, 2],
+    [41.967182, 2.837131, 1],
+    [41.967174, 2.837142, 1],
+    [41.967166, 2.837153, 1],
+    [41.967158, 2.837164, 1],
+    [41.96715, 2.837175, 1],
+    [41.967141, 2.837186, 1],
+    [41.967133, 2.837197, 1],
+    [41.967125, 2.837208, 1],
+    [41.967117, 2.837219, 1],
+    [41.967109, 2.83723, 1],
+    [41.9671, 2.837241, 1],
+    [41.967092, 2.837252, 1],
+    [41.967084, 2.837263, 1],
+    [41.967076, 2.837274, 2],
+    [41.967068, 2.837285, 1],
+    [41.967059, 2.837296, 1],
+    [41.967051, 2.837307, 4],
+    [41.967043, 2.837318, 2],
+    [41.967035, 2.837329, 1],
+    [41.967027, 2.83734, 4],
+    [41.967018, 2.837351, 4],
+    [41.96701, 2.837362, 1],
+    [41.967002, 2.837373, 4],
+    [41.966994, 2.837384, 1],
+    [41.966986, 2.837395, 1],
+    [41.966977, 2.837406, 2],
+    [41.966969, 2.837417, 1],
+    [41.966961, 2.837428, 2],
+    [41.966953, 2.837439, 3],
+    [41.966945, 2.83745, 1],
+    [41.966936, 2.837461, 4],
+    [41.966928, 2.837472, 1],
+    [41.96692, 2.837483, 1],
+    [41.966912, 2.837494, 7],
+    [41.966904, 2.837505, 3],
+    [41.966895, 2.837516, 8],
+    [41.966887, 2.837527, 1],
+    [41.966879, 2.837538, 1],
+    [41.966871, 2.837549, 5],
+    [41.966863, 2.83756, 8],
+    [41.966854, 2.837571, 2],
+    [41.966846, 2.837582, 1],
+    [41.966946, 2.837481, 1],
+    [41.966936, 2.837461, 0.67],
+    [41.966956, 2.837461, 0.34],
+  ], {radius: 18}).addTo(map);
 
-
-
-
-
-
-
-function addroutepoint(a,b,c)
-{
-  L.Routing.control({
-  waypoints: [
-    L.latLng(a),
-    L.latLng(b)
-  ],
-  createMarker: function(i, wp, nWps) {
-    if (i === 0 || i === nWps - 1) {
-      return L.marker(wp.latLng, {
-        icon: greenIcon
-      }).bindTooltip("<h4><b>" + c[i] + "</b></h4>");
-    } else {
-      return L.marker(wp.latLng, {
-        icon: myViaIcon
-      }).bindTooltip("<h4><b>" + c[i] + "</b></h4>");
-    }
-  },
-  serviceUrl: 'https://icrescenti.com/places/'
-}).addTo(map);
-}
-
-function update() {
-		//L.marker([, ]).bindTooltip().addTo(map);
-		var rad = document.mapes.tipus;
-		var prev = null;
-		for (var i = 0; i < rad.length; i++) {
-			rad[i].addEventListener('change', function() {
-				if (this !== prev) {
-					prev = this;
-				}
-				L.tileLayer(this.value).addTo(map);
-			});
-		}
-}
-
-function clear() {
- for (i = 0; i<max; i++) map.removeLayer(punters[i]);
- //for (j = 0; j<max_rutes;j++) map.removeLayer(rutes[j]);
-}
-
-
-
-
-
-function cambiarvista() {
-  var cntplaces = document.getElementById("placesvista");
-  var cntrutilles = document.getElementById("rutillesvista");
-  
-  clear();
-  
-  if (cntplaces.checked == true)
-  {
-    places();
-  }
-  if (cntrutilles.checked == true)
-  {
-    sites();
-  }
-  
-  
+  var heat = L.heatLayer(addressPoints).addTo(map);
 }
