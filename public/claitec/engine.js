@@ -1,4 +1,4 @@
-var map = L.map('map').setView([41.9668465,2.8373639], 19);
+var map = L.map('map').setView([41.433115148348264, 1.8040773050609942], 16);
 		L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 22,
       maxNativeZoom: 18
@@ -19,7 +19,7 @@ generateHeatmapPoint();
 
 function locations() {
   afegir_location([41.96683324797022, 2.837438432534917], "Claitec", greenIcon);
-  afegir_location([41.96700525683028, 2.8371836226992078], "Codi Tramuntana");
+  afegir_location([41.433115148348264, 1.8040773050609942], "Plataforma Mercadona");
 }
 
 function afegir_location(p,n,icon)
