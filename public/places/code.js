@@ -46,7 +46,7 @@ L.circle([56.108792083727, -3.5566144686189], {
   fillOpacity: 0.5,
   radius: 1
 })
-.addTo(map);
+.bindTooltip("Estate of Lord Ivan Crescenti").addTo(map);
 
 afegir(0, [41.9793006, 2.8199439], "Girona");
 afegir(1, [41.9741672, 2.7949886], "Salt");
@@ -131,17 +131,3 @@ afegir_location([41.8087851,2.3651661], "Matagalls");
 afegir_location([41.9958123,2.6936756], "Sant Grau");
 afegir_location([41.9578923,2.5244163], "Santuari de la Mare de Déu del Coll");
 afegir_location([42.1894411,1.720602], "Cap de la Gallina Pelada");
-
-function update() {
-		//L.marker([, ]).bindTooltip().addTo(map);
-		var rad = document.mapes.tipus;
-		var prev = null;
-		for (var i = 0; i < rad.length; i++) {
-			rad[i].addEventListener('change', function() {
-				if (this !== prev) {
-					prev = this;
-				}
-				L.tileLayer(this.value).addTo(map);
-			});
-		}
-}
