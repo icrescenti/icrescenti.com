@@ -50,8 +50,10 @@
 		<div id='map'>
 		</div>
 		<form name="mapes">
-			<input type="radio" name="tipus" id="t1" value="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" checked>
-			<label>OpenStreetMap.Mapnik</label>
+			<input type="radio" name="tipus" id="t1" onchange="setTile()" value="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" checked><label>Mapa Informacio</label>
+			<input type="radio" name="tipus" id="t2" onchange="setTile()" value="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png"><label>Mapa clar</label>
+			<input type="radio" name="tipus" id="t2" onchange="setTile()" value="https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png"><label>Mapa fosc</label>
+			<input type="radio" name="tipus" id="t2" onchange="setTile()" value="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"><label>Satel·lit</label>
 		</form>
 		
 		<script src="./code.js"></script>
