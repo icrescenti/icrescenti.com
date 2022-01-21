@@ -14,6 +14,8 @@
 
   <link rel="icon" href="https://icrescenti.com/places/img/location.png"/>
 
+  <link rel="stylesheet" href="./.css" />
+  
   <link rel="stylesheet" href="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.css" />
 <script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
   
@@ -47,15 +49,54 @@
 	</style>
 </head>
 	<body>
-		<div id='map'>
-		</div>
-		<form name="mapes">
-			<input type="radio" name="tipus" id="t1" onchange="setTile()" value="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" checked><label>Mapa Informacio</label>
-			<input type="radio" name="tipus" id="t2" onchange="setTile()" value="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png"><label>Mapa clar</label>
-			<input type="radio" name="tipus" id="t2" onchange="setTile()" value="https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png"><label>Mapa fosc</label>
-			<input type="radio" name="tipus" id="t2" onchange="setTile()" value="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"><label>Satel·lit</label>
-		</form>
 		
+		<div id='map' style="z-index: 1;">	
+		</div>
+		<div id="overlay" style="position:absolute; top:10px; left:10px; background-color:rgb(255, 255, 255); width:200px; height:220px; z-index: 100">
+			<div class="card">
+				<div class="container">
+					<br/>
+					<label class="b-contain">
+						<span>Halloween places</span>
+						<input name="halloweenLegend" type="checkbox" checked onchange="handleHalloween()">
+						<div class="b-input"></div>
+					</label>
+					<label class="b-contain">
+						<span>Iconic places</span>
+						<input name="placeLegend" type="checkbox" checked onchange="handlePlace()">
+						<div class="b-input"></div>
+					</label>
+					<label class="b-contain">
+						<span>Not confirmed</span>
+						<input name="unconfirmedLegend" type="checkbox" checked onchange="handleUnconfirmed()">
+						<div class="b-input"></div>
+					</label>
+					<label class="b-contain">
+						<span>Food</span>
+						<input name="foodLegend" type="checkbox" checked onchange="handleFood()">
+						<div class="b-input"></div>
+					</label>
+					<label class="b-contain">
+						<span>Distances</span>
+						<input name="distanceLegend" type="checkbox" checked onchange="handleDistance()">
+						<div class="b-input"></div>
+					</label>
+					<label class="b-contain">
+						<span>Flight</span>
+						<input type="checkbox">
+						<div class="b-input"></div>
+					</label>
+				</div>
+			</div>
+		</div>
+		<div id="overlay" style="position:absolute; top:240px; left:10px; background-color:rgb(255, 255, 255); width:200px; height:220px; z-index: 100">
+			<form name="mapes">
+				<input type="radio" name="tipus" id="t1" onchange="setTile()" value="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" checked><label>Mapa Informacio</label>
+				<input type="radio" name="tipus" id="t2" onchange="setTile()" value="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png"><label>Mapa clar</label>
+				<input type="radio" name="tipus" id="t2" onchange="setTile()" value="https://{s}.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png"><label>Mapa fosc</label>
+				<input type="radio" name="tipus" id="t2" onchange="setTile()" value="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"><label>Satel·lit</label>
+			</form>
+		</div>
 		<script src="./code.js"></script>
 	</body>
 </html>
