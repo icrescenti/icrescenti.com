@@ -19,6 +19,9 @@
   <link rel="stylesheet" href="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.css" />
 <script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
   
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+
 	<style>
 	body {
 		margin: 0px;
@@ -26,7 +29,6 @@
 	#map {
 		width: 100%;
 		height: 100vh;
-		box-shadow: 5px 5px 5px #888;
 	}
 	#options { 
 		width: 10%;
@@ -43,16 +45,16 @@
 		display: inline-block;
 	}
 	.leaflet-top {
-    display: none;
-    opacity: 100%;
-  }
+		display: none;
+		opacity: 100%;
+	}
 	</style>
 </head>
 	<body>
 		
 		<div id='map' style="z-index: 1;">	
 		</div>
-		<div id="overlay" style="position:absolute; top:10px; left:10px; background-color:rgb(255, 255, 255); width:200px; height:220px; z-index: 100">
+		<div id="overlay" style="position:absolute; top:10px; left:10px; background-color:rgb(255, 255, 255); width:200px; height:250px; z-index: 100">
 			<div class="card">
 				<div class="container">
 					<br/>
@@ -64,6 +66,11 @@
 					<label class="b-contain">
 						<span>Iconic places</span>
 						<input name="placeLegend" type="checkbox" checked onchange="handlePlace()">
+						<div class="b-input"></div>
+					</label>
+					<label class="b-contain">
+						<span>Home</span>
+						<input name="hubLegend" type="checkbox" checked onchange="handleHub()">
 						<div class="b-input"></div>
 					</label>
 					<label class="b-contain">
@@ -89,7 +96,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="overlay" style="position:absolute; top:240px; left:10px; background-color:rgb(255, 255, 255); width:200px; height:220px; z-index: 100">
+		<div id="overlay" style="position:absolute; top:270px; left:10px; background-color:rgb(255, 255, 255); width:200px; height:220px; z-index: 100">
 			<form name="mapes">
 				<input type="radio" name="tipus" id="t1" onchange="setTile()" value="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" checked><label>Mapa Informacio</label>
 				<input type="radio" name="tipus" id="t2" onchange="setTile()" value="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png"><label>Mapa clar</label>
